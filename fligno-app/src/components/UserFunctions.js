@@ -10,9 +10,6 @@ export const register = newUser => {
         })
         .catch(err => {
             console.log(err)
-            if (err.status === 400){
-                console.log("dsa")
-            }
         })
 }
 
@@ -29,10 +26,13 @@ export const login = user => {
             }
         )
         .then(response => {
+            
+            localStorage.setItem('usertoken', response.data.token)
+            localStorage.setItem('userrole', response.data.user.role_id)
             return response.data.token
         })
         .catch(err => {
-            console.log(err)
+            console.log(err.getKey)
         })
 }
 

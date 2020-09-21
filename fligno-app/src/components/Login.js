@@ -39,7 +39,7 @@ class Login extends Component {
         login(user).then(res => {
             if(res) {
                 this.props.history.push(`/`)
-                // window.location.reload(false);
+                window.location.reload(false);
             }
         })
 
@@ -63,7 +63,7 @@ class Login extends Component {
                                 Please sign
                             </h1>
                             <div className="form-group">
-                                <label htmlFor="email">Emaill Address</label>
+                                <label htmlFor="email">Email Address</label>
                                 <input type="email" 
                                     className="form-control" 
                                     name="email" 
