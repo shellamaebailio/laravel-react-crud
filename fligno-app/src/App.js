@@ -23,6 +23,17 @@ function PrivateRoute ({component: Component, authed, ...rest}) {
     />
   )
 }
+function PublicRoute ({component: Component, authed, ...rest}) {
+
+  return (
+    <Route
+      {...rest}
+      render={(props) => authed === true
+        ? <Component {...props} />
+        : <Redirect to={{pathname: '/Profile'}} />}
+    />
+  )
+}
 
 class App extends Component {
   render() {
@@ -33,10 +44,12 @@ class App extends Component {
           <Route exact path="/" component={Landing} />
           <div className="container">
             <Route exact path="/register" component={Register} />
-            <Route exact path="/login" component={Login} />
+            {/* <Route exact path="/login" component={Login} /> */}
             {/* <Route exact path="/profile" component={Profile} /> */}
             <PrivateRoute authed={localStorage.usertoken ? true : false} path='/profile' component={Profile} />
             <PrivateRoute authed={localStorage.usertoken ? true : false} path='/patient' component={Patient} />
+            <PublicRoute authed={localStorage.usertoken ? false : true} path='/login' component={Login} />
+
           </div>
         </div>
       </Router>

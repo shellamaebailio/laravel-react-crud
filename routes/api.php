@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PatientController;
+// use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\MailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +25,14 @@ Route::get('profile', [UserController::class, 'getAuthenticatedUser']);
 Route::resource('patient', PatientController::class);
 Route::post('getSpecificPatient', [PatientController::class, 'getSpecificPatient']);
 
+// paypal
+// Route::post('create-payment', [PaymentController::class, 'create']);
+
+// mail
+Route::post('send-email',[MailController::class, 'sendEmail']);
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+

@@ -14,7 +14,8 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
 use Tymon\JWTAuth\PayloadFactory;
 use Tymon\JWTAuth\JWTManager as JWT;
 
-class UserController extends Controller
+
+class UserController extends MailController
 {
     public function register(Request $request)
     {
@@ -38,6 +39,7 @@ class UserController extends Controller
 
         $token = JWTAuth::fromUser($user);
 
+        MailController::sendEmail($request->json()->get('email'), $request->json()->get('name'));
         return response()->json(compact('user', 'token'), 201);
     }
 

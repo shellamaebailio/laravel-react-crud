@@ -196,7 +196,7 @@ class Patient extends Component {
             <hr/>
             <h4>Save New Patient</h4>
             <br/>
-
+            
             <form noValidate onSubmit={this.state.patientID? this.updatePatient: this.onSubmit}> 
             <div className="row">
                 <div className="col">
@@ -206,6 +206,7 @@ class Patient extends Component {
                     name="firstName"
                     className="form-control" 
                     placeholder="First name"
+                    required
                     value={this.state.firstName}
                     onChange={this.onChange}
                 />
@@ -263,7 +264,7 @@ class Patient extends Component {
                             <th scope="col">First Name</th>
                             <th scope="col">Last Name</th>
                             <th scope="col">Contact #</th>
-                            <th scope="col">Status</th>
+                            <th scope="col">Patient Status</th>
                             </tr>
                         </thead>
 
@@ -273,6 +274,7 @@ class Patient extends Component {
 
                         {localStorage.userrole === '1'? adminComponent2 : null}
                     </div>
+                    
                 </div>
             </div>
         )
