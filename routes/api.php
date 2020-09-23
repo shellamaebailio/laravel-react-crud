@@ -6,7 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\PatientController;
 // use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\MailController;
-
+use App\Http\Controllers\PaymentController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -26,13 +26,16 @@ Route::resource('patient', PatientController::class);
 Route::post('getSpecificPatient', [PatientController::class, 'getSpecificPatient']);
 
 // paypal
-// Route::post('create-payment', [PaymentController::class, 'create']);
-
+Route::post('execute-payment', [PaymentController::class, 'execute']);
+Route::post('create-payment', [PaymentController::class, 'create']);
+Route::post('update-paypal-settings', [PaymentController::class,'updatePaypalSettings']);
+Route::post('get-paypal-settings', [PaymentController::class,'getPaypalSettings']);
+Route::post('get-payments', [PaymentController::class,'getPayments']);
 // mail
 Route::post('send-email',[MailController::class, 'sendEmail']);
+
+
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-
-

@@ -27,6 +27,7 @@
     <title>React App</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
+    
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
@@ -47,5 +48,57 @@
     crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
     crossorigin="anonymous"></script>
+    
+    <!-- paypal scripts  -->
+
+    <!-- <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+    <script>
+      paypal.Button.render({
+        // Configure environment
+        env: 'sandbox',
+        client: {
+          sandbox: 'AaCJ18v9jz-BGY4jpbxa21wdYchsvNuqdAFzVK5EqFQyVkt5JvBzhJeyHwaa_RMUC55sdFaG8Ex7cE9Y',
+          production: 'demo_production_client_id'
+        },
+        // Customize button (optional)
+        locale: 'en_US',
+        style: {
+          size: 'small',
+          color: 'gold',
+          shape: 'pill',
+        },
+
+        // Enable Pay Now checkout flow (optional)
+        commit: true,
+
+        // Set up a payment
+        payment: function(data, actions) {
+          return actions.payment.create({
+
+            redirect_urls:{
+              return_url:'http://localhost:3000/execute-payment'
+            },
+
+            transactions: [{
+              amount: {
+                total: '21',
+                currency: 'USD'
+              }
+            }]
+          });
+        },
+        // Execute the payment
+        onAuthorize: function(data, actions) {
+          // return actions.payment.execute().then(function() {
+          //   // Show a confirmation message to the buyer
+          //   window.alert('Thank you for your purchase!');
+          // });
+          return actions.redirect(); 
+        }
+      }, '#paypal-button');
+
+    </script> -->
+
+
   </body>
 </html>

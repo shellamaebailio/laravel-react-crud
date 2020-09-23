@@ -77,7 +77,7 @@ class Patient extends Component {
         })
     }
 
-    componentDidMount() {
+    componentDidMount() { 
         this.getData();
     }
 
@@ -244,6 +244,12 @@ class Patient extends Component {
             </div>
         )
 
+        const paypalComponent = (
+            <div>
+                <div id="paypal-button"></div>
+            </div>
+        )
+
 
         return (
             <div className="container">
@@ -274,8 +280,10 @@ class Patient extends Component {
 
                         {localStorage.userrole === '1'? adminComponent2 : null}
                     </div>
-                    
+                    <br/>
+                    {paypalComponent}
                 </div>
+                
             </div>
         )
     }

@@ -28,6 +28,16 @@ class Landing extends Component {
         const userLink = (
             <ul className="navbar-nav">
                 <li className="nav-item">
+                    <a href="/paypal-settings" className="nav-link">
+                        Paypal Settings
+                    </a>
+                </li>
+                <li className="nav-item">
+                    <Link to="/create-payment" className="nav-link">
+                        Payment
+                    </Link>
+                </li>
+                <li className="nav-item">
                     <Link to="/patient" className="nav-link">
                         Covid 19 Patient
                     </Link>
@@ -42,6 +52,7 @@ class Landing extends Component {
                         Logout
                     </a>
                 </li>
+                
             </ul>
         )
 

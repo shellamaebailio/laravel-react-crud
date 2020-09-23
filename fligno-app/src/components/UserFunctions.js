@@ -30,6 +30,7 @@ export const login = user => {
             
             localStorage.setItem('usertoken', response.data.token)
             localStorage.setItem('userrole', response.data.user.role_id)
+            localStorage.setItem('userid', response.data.user.id)
             return response.data.token
         })
         .catch(err => {

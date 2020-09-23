@@ -1,22 +1,37 @@
 import axios from 'axios'
+// import { repeat } from 'lodash'
 
-export const savePatient = newPatient => {
+export const executePayment = newPatient => {
     return axios
-        .post('api/patient', newPatient, {
+        .post('api/execute-payment', newPatient, {
             headers: { 'Content-Type': 'application/json' }
         })
         .then(response => {
-            console.log(response)
+            // return response
+            this.props.history.push(response.data)
         })
         .catch(err => {
             console.log(err)
         })
 }
 
-export const updatePatient = patient => {
-    
+export const createPayment = amt => {
     return axios
-        .put('api/patient/'+patient.patientID, patient, {
+        .post('api/create-payment', amt, {
+            headers: { 'Content-Type': 'application/json' }
+        })
+        .then(response => {
+            return response
+
+        })
+        .catch(err => {
+            console.log(err)
+        })
+}
+ 
+export const getPaypalSettings = () => {
+    return axios
+        .post('api/get-paypal-settings', {
             headers: { 'Content-Type': 'application/json' }
         })
         .then(response => {
@@ -27,39 +42,27 @@ export const updatePatient = patient => {
         })
 }
 
-export const deletePatient = patientID => {
-    return axios 
-        .delete('api/patient/'+patientID, {
+export const updatePaypalSettings = settings => {
+    return axios
+        .post('api/update-paypal-settings', settings, {
             headers: { 'Content-Type': 'application/json' }
         })
         .then(response => {
             console.log(response)
         })
-        .catch(error => {
-            console.log(error)
+        .catch(err => {
+            console.log(err)
         })
 }
 
-export const getPatient = () => {
+export const getPayments = id => {
     return axios
-        .get('api/patient', {
-            headers: { Authorization: `Bearer ${localStorage.usertoken}` }
+        .post('api/get-payments', id, {
+            headers: { 'Content-Type': 'application/json' }
         })
         .then(response => {
+            console.log(response)
             return response.data
-        })
-        .catch(err => {
-            console.log(err)
-        })
-}
-
-export const getSpecificPatient = patientID => {
-    return axios
-        .post('api/getSpecificPatient', patientID, {
-            headers: { 'Content-Type': 'application/json' }
-        })
-        .then(response => {
-            return response
         })
         .catch(err => {
             console.log(err)
